@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import { Body, CardItem, Card, Text } from "native-base";
 import { StyleSheet } from "react-native";
 
-const NoteCard = (props) => {
+const TaskCard = (props) => {
   return (
     <Card style={styles.card}>
       <CardItem style={styles.carditem}>
         <Body>
-          <Text numberOfLines={10} ellipsizeMode="tail">
-            {props.note.text}
+          <Text numberOfLines={3} ellipsizeMode="tail" style={styles.text}>
+            {props.task.text}
           </Text>
         </Body>
       </CardItem>
-      <CardItem footer style={styles.carditem}>
+      <CardItem footer style={styles.footer}>
         <Text style={styles.datetext}>GeekyAnts</Text>
       </CardItem>
     </Card>
@@ -21,16 +21,21 @@ const NoteCard = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 8,
-    backgroundColor: "#fcc",
+    backgroundColor: "#ccc",
+    borderRadius: 10,
+    overflow: "hidden",
   },
   carditem: {
-    borderRadius: 8,
-    backgroundColor: "#fcc",
+    backgroundColor: "#ccc",
   },
+  text: {
+    fontSize: 22,
+    textAlign: "center",
+  },
+  footer: { backgroundColor: "#ccf", height: 15 },
   datetext: {
     fontSize: 12,
   },
 });
 
-export default NoteCard;
+export default TaskCard;

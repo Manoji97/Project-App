@@ -14,9 +14,16 @@ const AddNote = (props) => {
       >
         <Icon name="add" />
         <Button style={{ backgroundColor: "#34A34F" }}>
+          {/*on press should move to add note page*/}
           <Icon name="logo-whatsapp" />
         </Button>
-        <Button style={{ backgroundColor: "#3B5998" }}>
+        <Button
+          style={{ backgroundColor: "#3B5998" }}
+          onPress={() => {
+            props.settextarea();
+          }}
+        >
+          {/*on press should open a textbox no top to write tk title*/}
           <Icon name="logo-facebook" />
         </Button>
       </Fab>

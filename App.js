@@ -6,6 +6,7 @@ import { Spinner, Container, Header } from "native-base";
 
 import Mainscreen from "./screens/mainscreen";
 import AddNoteScreen from "./screens/addnotescreen";
+import SubtaskList from "./components/subtask/subtasklist";
 
 class App extends Component {
   state = {

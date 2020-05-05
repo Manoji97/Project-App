@@ -1,52 +1,65 @@
-import React, { Component } from "react";
-import { Image } from "react-native";
-import {
-  Card,
-  CardItem,
-  Thumbnail,
-  Text,
-  Button,
-  Icon,
-  Left,
-  Body,
-  Right,
-} from "native-base";
-export default class CardImageExample extends Component {
-  render() {
-    return (
+import React, { useState } from "react";
+import { StyleSheet, TouchableNativeFeedback } from "react-native";
+import { Card, CardItem, Text, Button, Left, Right } from "native-base";
+
+import TopCardItem from "./carditems/topcarditem";
+import AttachmentCard from "./carditems/attachmentcard";
+import ImageCarditem from "./carditems/imagecarditem";
+import BottomCardItem from "./carditems/bottomcarditem";
+
+const Subtaskcard = (props) => {
+  const [opencard, setopencard] = useState({ url: false, attachment: false });
+
+  return (
+    <TouchableNativeFeedback onPress={() => console.log("touched")}>
       <Card>
+        <TopCardItem />
+
+        {props.task.imagelink !== "" ? <ImageCarditem /> : null}
+
         <CardItem>
-          <Left>
-            <Body>
-              <Text>NativeBase</Text>
-              <Text note>GeekyAnts</Text>
-            </Body>
-          </Left>
+          <Text>makfnuhfuishvfsghb sfy safio ahasuif sgf sdvsn vjcasduf u</Text>
         </CardItem>
-        <CardItem cardBody>
-          <Image
-            source={{ uri: "Image URL" }}
-            style={{ height: 200, width: null, flex: 1 }}
-          />
-        </CardItem>
-        <CardItem>
-          <Left>
-            <Button transparent>
-              <Icon active name="thumbs-up" />
-              <Text>12 Likes</Text>
-            </Button>
-          </Left>
-          <Body>
-            <Button transparent>
-              <Icon active name="chatbubbles" />
-              <Text>4 Comments</Text>
-            </Button>
-          </Body>
-          <Right>
-            <Text>11h ago</Text>
-          </Right>
-        </CardItem>
+
+        <BottomCardItem />
+
+        <Button
+          full
+          style={styles.blockbuttons}
+          onPress={() =>
+            setopencard((prevstate) => ({
+              url: !prevstate.url,
+              attachment: false,
+            }))
+          }
+        >
+          <Text>Urls</Text>
+        </Button>
+        {opencard.url ? <AttachmentCard /> : null}
+
+        <Button
+          full
+          style={styles.blockbuttons}
+          onPress={() =>
+            setopencard((prevstate) => ({
+              url: false,
+              attachment: !prevstate.attachment,
+            }))
+          }
+        >
+          <Text>Attachments</Text>
+        </Button>
+        {opencard.attachment ? <AttachmentCard /> : null}
       </Card>
-    );
-  }
-}
+    </TouchableNativeFeedback>
+  );
+};
+
+const styles = StyleSheet.create({
+  blockbuttons: {
+    borderColor: "white",
+    borderTopWidth: 0.5,
+  },
+});
+
+export default Subtaskcard;
