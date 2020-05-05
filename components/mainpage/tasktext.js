@@ -10,6 +10,7 @@ import {
   Icon,
 } from "native-base";
 import { StyleSheet } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 const TaskTextArea = (props) => {
   const [exteredtext, settext] = useState("");
@@ -34,10 +35,22 @@ const TaskTextArea = (props) => {
       </Left>
       <Right style={styles.buttonpanel}>
         <Button transparent onPress={() => props.addtasktotasks(exteredtext)}>
-          <Icon style={styles.icons} active name="camera" />
+          <FontAwesome
+            size={20}
+            color={"green"}
+            style={styles.icons}
+            active
+            name="check-circle"
+          />
         </Button>
         <Button transparent onPress={() => props.closetextarea()}>
-          <Icon style={styles.icons} active name="alarm" />
+          <FontAwesome
+            size={20}
+            color={"red"}
+            style={styles.icons}
+            active
+            name="times-circle"
+          />
         </Button>
       </Right>
     </CardItem>

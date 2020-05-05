@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Body, CardItem, Card, Text } from "native-base";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, TouchableNativeFeedback } from "react-native";
 
 const NoteCard = (props) => {
   const imageitem =
@@ -11,31 +11,34 @@ const NoteCard = (props) => {
     ) : null;
 
   return (
-    <Card style={styles.card}>
-      {imageitem}
-      <CardItem style={styles.carditem}>
-        <Body>
-          <Text numberOfLines={7} ellipsizeMode="tail">
-            {props.task.text}
+    <TouchableNativeFeedback onPress={() => console.log(props.task.id)}>
+      <Card style={styles.card}>
+        {imageitem}
+        <CardItem style={styles.carditem}>
+          <Body>
+            <Text numberOfLines={7} ellipsizeMode="tail">
+              {props.task.text}
+            </Text>
+          </Body>
+        </CardItem>
+        <CardItem footer style={styles.footer}>
+          <Text style={styles.datetext}>
+            {props.task.datecreated.toLocaleDateString("en-US")}
           </Text>
-        </Body>
-      </CardItem>
-      <CardItem footer style={styles.carditem}>
-        <Text style={styles.datetext}>GeekyAnts</Text>
-      </CardItem>
-    </Card>
+        </CardItem>
+      </Card>
+    </TouchableNativeFeedback>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
     borderRadius: 8,
-    backgroundColor: "#fcc",
+    backgroundColor: "#fcf",
     overflow: "hidden",
   },
   carditem: {
-    borderRadius: 8,
-    backgroundColor: "#fcc",
+    backgroundColor: "#fcf",
   },
   datetext: {
     fontSize: 12,
@@ -45,6 +48,11 @@ const styles = StyleSheet.create({
     width: null,
     flex: 1,
     resizeMode: "cover",
+  },
+  footer: {
+    height: 12,
+    backgroundColor: "#fcc",
+    justifyContent: "flex-end",
   },
 });
 

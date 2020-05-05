@@ -1,40 +1,59 @@
 import React from "react";
 import { Body, CardItem, Card, Text } from "native-base";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableNativeFeedback } from "react-native";
 
 const TaskCard = (props) => {
   return (
-    <Card style={styles.card}>
-      <CardItem style={styles.carditem}>
-        <Body>
-          <Text numberOfLines={3} ellipsizeMode="tail" style={styles.text}>
-            {props.task.text}
+    <TouchableNativeFeedback
+      onPress={() => console.log(props.task.id)}
+      onLongPress={() => setedit(!edit)}
+    >
+      <Card style={styles.card}>
+        <CardItem style={styles.carditem}>
+          <Body>
+            <Text style={styles.text} numberOfLines={3}>
+              {props.task.text}
+            </Text>
+          </Body>
+        </CardItem>
+        <CardItem footer style={styles.footer}>
+          <Text style={styles.datetext}>
+            {props.task.datecreated.toLocaleDateString("en-US")}
           </Text>
-        </Body>
-      </CardItem>
-      <CardItem footer style={styles.footer}>
-        <Text style={styles.datetext}>GeekyAnts</Text>
-      </CardItem>
-    </Card>
+        </CardItem>
+      </Card>
+    </TouchableNativeFeedback>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#ccc",
+    backgroundColor: "#ccf",
     borderRadius: 10,
     overflow: "hidden",
   },
   carditem: {
-    backgroundColor: "#ccc",
+    backgroundColor: "#ccf",
   },
   text: {
     fontSize: 22,
     textAlign: "center",
   },
-  footer: { backgroundColor: "#ccf", height: 15 },
+  footer: {
+    backgroundColor: "#ccc",
+    height: 12,
+    justifyContent: "flex-end",
+  },
   datetext: {
     fontSize: 12,
+  },
+  edit: {
+    height: 30,
+    backgroundColor: "blue",
+  },
+  edititem: {
+    flex: 0.5,
+    justifyContent: "center",
   },
 });
 

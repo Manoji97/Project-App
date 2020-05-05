@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flex: 1,
     padding: 10,
+    paddingBottom: 15,
   },
   list: {
     width: "50%",

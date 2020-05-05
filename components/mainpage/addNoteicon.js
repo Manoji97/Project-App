@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Button, Icon, Fab } from "native-base";
+import { FontAwesome5, Foundation } from "@expo/vector-icons";
 
 const AddNote = (props) => {
   return (
@@ -15,16 +16,16 @@ const AddNote = (props) => {
         <Icon name="add" />
         <Button style={{ backgroundColor: "#34A34F" }}>
           {/*on press should move to add note page*/}
-          <Icon name="logo-whatsapp" />
+          <Foundation size={15} color="white" name="clipboard-notes" />
         </Button>
         <Button
-          style={{ backgroundColor: "#3B5998" }}
+          style={{ backgroundColor: "#34A34F" }}
           onPress={() => {
             props.settextarea();
           }}
         >
           {/*on press should open a textbox no top to write tk title*/}
-          <Icon name="logo-facebook" />
+          <FontAwesome5 size={15} color="white" name="tasks" />
         </Button>
       </Fab>
     </View>
