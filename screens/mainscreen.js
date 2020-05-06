@@ -10,7 +10,6 @@ import tempdata from "../model/tempdata";
 
 const Mainscreen = (props) => {
   const [fab, setfab] = useState(false);
-  const [tasktextarea, settasktextarea] = useState(false);
   const [tasks, settasks] = useState([]);
 
   useEffect(() => {
@@ -20,13 +19,7 @@ const Mainscreen = (props) => {
   const togglefab = () => {
     setfab(!fab);
   };
-  const closetextarea = () => {
-    settasktextarea(false);
-  };
-  const settextarea = () => {
-    settasktextarea(true);
-    setfab(false);
-  };
+
   const addtasktotasks = (task) => {
     //should add to database
     settasks((prevstate) =>
@@ -38,19 +31,12 @@ const Mainscreen = (props) => {
         imagelink: "",
       })
     );
-    settasktextarea(false);
   };
   return (
     <Container>
       <SearchBar />
-      {tasktextarea ? (
-        <TaskTextArea
-          closetextarea={closetextarea}
-          addtasktotasks={addtasktotasks}
-        />
-      ) : null}
       <NotesList tasks={tasks} />
-      <AddNote active={fab} toggle={togglefab} settextarea={settextarea} />
+      <AddNote navigation={props.navigation} active={fab} toggle={togglefab} />
     </Container>
   );
 };

@@ -8,6 +8,8 @@ import Mainscreen from "./screens/mainscreen";
 import AddNoteScreen from "./screens/addnotescreen";
 import SubtaskList from "./components/subtask/subtasklist";
 
+import TaskAppNavigator from "./navigation/tasknavigator";
+
 class App extends Component {
   state = {
     loading: true,
@@ -26,12 +28,7 @@ class App extends Component {
     if (this.state.loading) {
       return <Spinner color="green" />;
     }
-    return (
-      <Container>
-        <Header />
-        <Mainscreen />
-      </Container>
-    );
+    return <TaskAppNavigator />;
   }
 }
 

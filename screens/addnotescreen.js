@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Textarea,
-  Container,
-  Footer,
-  FooterTab,
-  Button,
-  Text,
-} from "native-base";
+import { Textarea, Container } from "native-base";
 import { StyleSheet } from "react-native";
 
 const AddNoteScreen = (props) => {
@@ -19,6 +12,7 @@ const AddNoteScreen = (props) => {
         bordered
         placeholder={"Add Note"}
         onChangeText={(message) => setnote(message)}
+        value={note}
       />
     </Container>
   );

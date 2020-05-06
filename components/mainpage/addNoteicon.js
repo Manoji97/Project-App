@@ -14,17 +14,20 @@ const AddNote = (props) => {
         onPress={() => props.toggle()}
       >
         <Icon name="add" />
-        <Button style={{ backgroundColor: "#34A34F" }}>
-          {/*on press should move to add note page*/}
+        <Button
+          style={{ backgroundColor: "#34A34F" }}
+          onPress={() => {
+            props.navigation.navigate("AddNoteScreen");
+          }}
+        >
           <Foundation size={15} color="white" name="clipboard-notes" />
         </Button>
         <Button
           style={{ backgroundColor: "#34A34F" }}
           onPress={() => {
-            props.settextarea();
+            props.navigation.navigate("AddTaskScreen", { name: "AddTask" });
           }}
         >
-          {/*on press should open a textbox no top to write tk title*/}
           <FontAwesome5 size={15} color="white" name="tasks" />
         </Button>
       </Fab>
