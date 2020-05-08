@@ -1,53 +1,83 @@
 import React, { useState } from "react";
 import {
-  Text,
   Container,
+  Header,
   Tab,
   Tabs,
-  ScrollableTab,
-  Button,
+  TabHeading,
   Icon,
-  Item,
+  Text,
+  View,
 } from "native-base";
-import { StyleSheet, FlatList, TouchableNativeFeedback } from "react-native";
+import { StyleSheet } from "react-native";
+
+import Images from "./images/imageslist";
+
+const Subtasks = (props) => {
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#ccc",
+        margin: 10,
+        marginBottom: 0,
+      }}
+    >
+      <Text>Subtasks</Text>
+    </View>
+  );
+};
+const Attach = (props) => {
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#ccc",
+      }}
+    >
+      <Text>Attach</Text>
+    </View>
+  );
+};
 
 const Tabsection = (props) => {
-  const [expand, set_expand] = useState(false);
   return (
-    <Container style={{ backgroundColor: "#cff", flex: expand ? 1 : 0.3 }}>
+    <Container>
       <Tabs
-        renderTabBar={() => <ScrollableTab />}
-        style={{
-          padding: 5,
+        tabBarPosition="bottom"
+        tabBarUnderlineStyle={{
+          position: "absolute",
+          top: 0,
         }}
       >
-        <Tab heading="Text" style={{ backgroundColor: "#ccc", height: 200 }}>
-          <Text>manoji is the best as always</Text>
+        <Tab
+          heading={
+            <TabHeading>
+              <Icon name="image" />
+            </TabHeading>
+          }
+        >
+          <Images imagelinks={props.images} />
         </Tab>
-        <Tab heading="Notes">
-          <Text>djahsjdf shfhs khsuh gushg</Text>
+        <Tab
+          heading={
+            <TabHeading>
+              <Text>Subtasks</Text>
+            </TabHeading>
+          }
+        >
+          <Subtasks />
         </Tab>
-        <Tab heading="Images">
-          <Text>djahsjdf shfhs khsuh gushg</Text>
-        </Tab>
-        <Tab heading="Attachments">
-          <Text>djahsjdf shfhs khsuh gushg</Text>
+        <Tab
+          heading={
+            <TabHeading>
+              <Icon name="apps" />
+            </TabHeading>
+          }
+        >
+          <Attach />
         </Tab>
       </Tabs>
-      <Button
-        bordered
-        style={{
-          position: "absolute",
-          alignSelf: "center",
-          bottom: -12,
-          borderRadius: 25,
-        }}
-        onPress={() => {
-          set_expand(!expand);
-        }}
-      >
-        <Icon name="add" />
-      </Button>
     </Container>
   );
 };

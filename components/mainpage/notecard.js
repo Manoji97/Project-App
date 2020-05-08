@@ -33,7 +33,7 @@ const NoteCard = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 8,
+    borderRadius: 6,
     backgroundColor: "#fcf",
     overflow: "hidden",
   },

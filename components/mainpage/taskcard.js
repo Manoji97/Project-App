@@ -29,7 +29,7 @@ const TaskCard = (props) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#ccf",
-    borderRadius: 10,
+    borderRadius: 6,
     overflow: "hidden",
   },
   carditem: {
