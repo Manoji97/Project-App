@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
   view: {
     flex: 1,
     alignItems: "center",
+    borderTopEndRadius: 10,
   },
   FlatList: {
     flex: 1,
